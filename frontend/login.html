@@ -1,27 +1,44 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login page</title>
-        <link rel="stylesheet" href="../css/login.css">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Academic Management System</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
 
-    <body>
-        <header>
-            <h1>Welcome to the Login Page</h1>
-        </header>
-        <div class="container">
-            <h2>Login</h2>
-            <form action="/login" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                
-                <button type="submit">Login</button>
-            </form>
-        </div>
-        
+    <div class="login-container">
+        <form class="login-form">
+            <h2>Portal Login</h2>
+            <p>Please enter your credentials to access the system.</p>
+
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Email@gmail.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-options">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="submit-btn">Login to Dashboard</button>
+
+            <div class="back-home">
+                <a href="signup.html">Sign up</a>
+            </div>
+            
+            <div class="back-home">
+                <a href="land.html">← Back to Home</a>
+            </div>
+        </form>
+    </div>
+
+</body>
 </html>
