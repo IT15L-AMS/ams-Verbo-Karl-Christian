@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Directory | Registrar</title>
+    <link rel="stylesheet" href="../../css/Rstudent.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="brand-name">AMS Registrar</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="registrar-portal.html" class="nav-link">Dashboard</a>
+                <a href="registrar-students.html" class="nav-link active">Students</a>
+                <a href="registrar-courses.html" class="nav-link">Courses</a>
+                <div class="logout-container">
+                    <a href="login.html" class="logout-btn">Logout</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-text">
+                    <h1>Student Directory</h1>
+                    <p class="breadcrumb">Registrar / Master Student List</p>
+                </div>
+                <input type="text" class="search-box" placeholder="Search ID or Name...">
+            </header>
+
+            <section class="data-section">
+                <div class="glass-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Full Name</th>
+                                <th>Department</th>
+                                <th>Total Units</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>2026-0001</strong></td>
+                                <td>Juan Dela Cruz</td>
+                                <td>Information Technology</td>
+                                <td>21 Units</td>
+                                <td><span class="status-pill">Enrolled</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2026-0045</strong></td>
+                                <td>Maria Clara</td>
+                                <td>Computer Science</td>
+                                <td>18 Units</td>
+                                <td><span class="status-pill">Enrolled</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2026-0092</strong></td>
+                                <td>Simoun Ibarra</td>
+                                <td>Engineering</td>
+                                <td>23 Units</td>
+                                <td><span class="status-pill">Enrolled</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

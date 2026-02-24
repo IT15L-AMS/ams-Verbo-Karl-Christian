@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | AMS</title>
+    <link rel="stylesheet" href="../../css/student.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="brand-name">AMS Student</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="student-portal.html" class="nav-link active">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Senrollcourses.html" class="nav-link">Enroll Courses</a>
+                    </li>
+                    <li class="nav-item logout-container">
+                        <a href="login.html" class="nav-link logout-btn">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Student Dashboard</h1>
+                <p class="names">Welcome back,Karl Christian Verbo</p>
+            </header>
+
+            <section class="dashboard-grid">
+                <div class="glass-card profile-card">
+                    <div class="card-header">
+                        <h3>Student Information</h3>
+                    </div>
+                    <div class="profile-details">
+                        <div class="detail-item"><span>Student ID:</span> <strong>2026-0001</strong></div>
+                        <div class="detail-item"><span>Full Name:</span> <strong>Karl Christian Verbo</strong></div>
+                        <div class="detail-item"><span>Email:</span> <strong>k.verbo@university.edu</strong></div>
+                        <div class="detail-item"><span>Program:</span> <strong>BS Information Technology</strong></div>
+                        <div class="detail-item"><span>Year Level:</span> <strong>3rd Year</strong></div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>My Enrolled Courses</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Course Title</th>
+                                <th>Units</th>
+                                <th>Instructor</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CS101</td>
+                                <td>Introduction to Programming</td>
+                                <td>3</td>
+                                <td>Prof. Maria Santos</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>IT202</td>
+                                <td>Database Systems</td>
+                                <td>3</td>
+                                <td>Dr. Alan Turing</td>
+                                <td>3.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

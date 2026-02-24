@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details | Registrar</title>
+    <link rel="stylesheet" href="../../css/Rinsidecode.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="brand-name">AMS Registrar</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link">Dashboard</a>
+                <a href="Rstudent.html" class="nav-link">Students</a>
+                <a href="registrar-courses.html" class="nav-link active">Courses</a>
+                <div class="logout-container">
+                    <a href="login.html" class="logout-btn">Logout</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-text">
+                    <h1>Course Information</h1>
+                </div>
+                <button class="export-btn">Export to CSV</button>
+            </header>
+
+            <section class="info-grid">
+                <div class="glass-card summary-card">
+                    <div class="detail-item">
+                        <label>Course Code</label>
+                        <p>#1024</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Course Title</label>
+                        <p>Object Oriented Programming</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Instructor Assigned</label>
+                        <p class="instructor-name">Prof. Maria Santos</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="student-list-section">
+                <div class="glass-card table-container">
+                    <div class="card-header">
+                        <h3>Enrolled Students & Grades</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Year Level</th>
+                                <th class="text-center">Final Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2026-0001</td>
+                                <td>Juan Dela Cruz</td>
+                                <td>Information Technology</td>
+                                <td>3rd Year</td>
+                                <td class="text-center grade-badge">1.25</td>
+                            </tr>
+                            <tr>
+                                <td>2026-0045</td>
+                                <td>Maria Clara</td>
+                                <td>Computer Science</td>
+                                <td>2nd Year</td>
+                                <td class="text-center grade-badge">1.75</td>
+                            </tr>
+                            <tr>
+                                <td>2026-0089</td>
+                                <td>Crisostomo Ibarra</td>
+                                <td>Engineering</td>
+                                <td>4th Year</td>
+                                <td class="text-center grade-badge">2.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

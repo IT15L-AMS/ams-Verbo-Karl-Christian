@@ -1,0 +1,142 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body { 
+    background: linear-gradient(135deg, #507294 0%, #3498db 100%);
+}
+.dashboard-wrapper { 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #e2e8f0;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+    .sidebar .brand-name { 
+        display: block; 
+        padding: 10px 25px 30px 25px; 
+        font-size: 1.4rem; font-weight: 
+        bold; color: #7c3aed;
+     }
+
+    .sidebar .nav-link { 
+        display: block; 
+        text-decoration: none; 
+        color: #1e293b; 
+        padding: 12px 25px; 
+        font-weight: 500; 
+    }
+    .sidebar .nav-link.active { 
+        background-color: #1e293b; 
+        color: white;
+     }
+    .sidebar .logout-container { 
+        margin-top: auto; 
+        padding-bottom: 20px; 
+    }
+    .sidebar .logout-btn { 
+        color: #ff4d4d; 
+        text-decoration: none; 
+        padding-left: 25px; 
+    }
+
+/* --- 2. MAIN CONTENT & HEADER --- */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 40px;
+}
+
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 30px;
+    }
+
+    .back-link {
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .content-header h1 { 
+        font-size: 2rem; 
+        font-weight: 800; 
+        color: #000; 
+    }
+    .content-header .ins-name { 
+        color: rgba(255,255,255,0.8); 
+    }
+
+/* --- 3. GRADING TABLE HIERARCHY --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .data-table th {
+        text-align: left;
+        padding: 15px;
+        font-size: 0.85rem;
+        color: #64748b;
+        text-transform: uppercase;
+        border-bottom: 2px solid rgba(0,0,0,0.05);
+    }
+
+    .data-table td {
+        padding: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        color: #1e293b;
+        font-size: 0.95rem;
+    }
+
+/* Grade Input Styling */
+.grade-input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+    .grade-input:focus {
+        outline: none;
+        border-color: #7c3aed;
+        box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
+    }
+
+
+.btn-update {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students | AMS Admin</title>
+    <link rel="stylesheet" href="../../css/adStudent.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="brand-name">AMS Admin</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="admin.html" class="nav-link">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="adStudent.html" class="nav-link active">Manage Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="adCourses.html" class="nav-link">Manage Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">System Settings</a>
+                    </li>
+                    <li class="nav-item logout-container">
+                        <a href="login.html" class="nav-link logout-btn">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Student Management</h1>
+            </header>
+
+            <section class="data-section">
+                <div class="data-card">
+                    <table class="student-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Year Level</th>
+                                <th>Program</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2026-0001</td>
+                                <td>Juan Dela Cruz</td>
+                                <td>j.delacruz@university.edu</td>
+                                <td>3rd Year</td>
+                                <td>BS Information Technology</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-primary">Create Student</button>
+                    <button class="btn btn-secondary">View Student</button>
+                    <button class="btn btn-secondary">Update Student</button>
+                    <button class="btn btn-danger">Deactivate Student</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

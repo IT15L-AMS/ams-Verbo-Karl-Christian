@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management | AMS Admin</title>
+    <link rel="stylesheet" href="../../css/adCourses.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="brand-name">AMS Admin</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="admin.html" class="nav-link">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="adStudent.html" class="nav-link">Manage Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Manage Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">System Settings</a>
+                    </li>
+                    <li class="nav-item logout-container">
+                        <a href="login.html" class="nav-link logout-btn">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Course Management</h1>
+                <p class="names">Admin / Manage Courses</p>
+            </header>
+
+            <section class="data-section">
+                <div class="data-card">
+                    <table class="course-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Title</th>
+                                <th>Units</th>
+                                <th>Instructor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CS101</td>
+                                <td>Introduction to Programming</td>
+                                <td>3</td>
+                                <td>Prof. Maria Santos</td>
+                            </tr>
+                            <tr>
+                                <td>IT202</td>
+                                <td>Database Management Systems</td>
+                                <td>3</td>
+                                <td class="unassigned">Not Assigned</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-primary">Create Course</button>
+                    <button class="btn btn-secondary">Update Course</button>
+                    <button class="btn btn-secondary">Delete Course</button>
+                    <button class="btn btn-assign">Assign Instructor</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

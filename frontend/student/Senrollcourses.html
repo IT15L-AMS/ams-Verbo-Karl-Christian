@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Courses | AMS</title>
+    <link rel="stylesheet" href="../../css/Senrollcourses.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="brand-name">AMS Student</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="student.html" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="enroll-courses.html" class="nav-link active">Enroll Courses</a>
+                    </li>
+                    <li class="nav-item logout-container">
+                        <a href="../login.html" class="nav-link logout-btn">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Available Courses</h1>
+                <p class="names">Student / Enrollment</p>
+            </header>
+
+            <section class="enrollment-section">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>Select Courses to Enroll</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Title</th>
+                                <th>Units</th>
+                                <th>Instructor</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CS102</td>
+                                <td>Data Structures and Algorithms</td>
+                                <td>3</td>
+                                <td>Prof. Maria Santos</td>
+                                <td><button class="btn-enroll">Enroll Course</button></td>
+                            </tr>
+                            <tr>
+                                <td>GE105</td>
+                                <td>Ethics</td>
+                                <td>3</td>
+                                <td>Dr. Jose Rizal</td>
+                                <td><button class="btn-enroll">Enroll Course</button></td>
+                            </tr>
+                            <tr>
+                                <td>IT303</td>
+                                <td>Web Development</td>
+                                <td>3</td>
+                                <td class="unassigned">TBA</td>
+                                <td><button class="btn-enroll">Enroll Course</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
