@@ -26,7 +26,7 @@ db.getConnection()
         console.log("✅ Database Connected Successfully!");
         connection.release();
     })
-    .catch(err => console.error("❌ Database Connection Failed:", err.message));
+    .catch(err => console.error("Database Connection Failed:", err.noDB));
 
 // --- 2. AUTHENTICATION MIDDLEWARE ---
 // Use this for any route that needs a valid login token
@@ -111,5 +111,5 @@ app.get('/auth/profile', authenticateToken, (req, res) => {
 // --- 5. START SERVER ---
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
