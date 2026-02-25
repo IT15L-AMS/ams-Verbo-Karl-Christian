@@ -1,48 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up - Academic Management System</title>
-        <link rel="stylesheet" href="../css/Signup.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Academic Management System</title>
+    <link rel="stylesheet" href="css/Signup.css">
+</head>
 
-    <body>
-        <div class="signup-container">
-            <form class="signup-form">
-                <h2>Sign Up</h2>
+<body>
+    <div class="signup-container">
+        <form class="signup-form" id="registrationForm">
+            <h2>Sign Up</h2>
 
-                <div class="input-group">
-                    <label for="role">Select Role</label>
-                    <select id="role" name="role" required>
-                        <option value="" disabled selected>Select your role</option>
-                        <option value="student">Student</option>
-                        <option value="faculty">Instructor</option>
-                        <option value="admin">Registrar</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="Karl Christian Verbo" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="karlverbo@example.com" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                </div>
-                <div class="input-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" placeholder="Re-enter your password" required>
-                </div>
-                <button type="submit" class="signup-btn">Register Now</button>
+            <div class="input-group">
+                <label for="role">Select Role</label>
+                <select id="role" name="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="student">Student</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="registrar">Registrar</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Karl Christian Verbo" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="karlverbo@example.com" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Re-enter your password" required>
+            </div>
+            <button type="submit" class="signup-btn">Register Now</button>
 
-                <div class="back-home">
+            <div class="back-home">
                 <a href="login.html">Sign in</a>
-                </div>
+            </div>
+        </form>
+    </div>
 
-            </form>
-        </div>
-    </body>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // 1. Basic Validation: Match Passwords
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // 2. Prepare Data (Matching the server.js expectations)
+            const userData = {
+                fullname: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                password: password,
+                roleName: document.getElementById('role').value
+            };
+
+            try {
+                // 3. Send Data to Backend
+                const response = await fetch('http://localhost:5000/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("Account created successfully!");
+                    window.location.href = 'login.html'; // Redirect to login
+                } else {
+                    alert("Registration failed: " + result.message);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Could not connect to the server. Make sure your backend is running!");
+            }
+        });
+    </script>
+</body>
+</html>
