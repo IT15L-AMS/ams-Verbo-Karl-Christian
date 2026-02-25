@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Academic Management System</title>
+    <link rel="stylesheet" href="css/Signup.css"> </head>
+<body>
+    <div class="signup-container">
+        <div class="signup-form">
+            <h2>Welcome, <span id="userName">User</span>!</h2>
+            <p>Your Role: <strong id="userRole">Loading...</strong></p>
+            <hr>
+            <p id="apiMessage">Fetching protected data...</p>
+            <button onclick="logout()" class="signup-btn" style="background-color: #ff4d4d; margin-top: 20px;">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        async function loadDashboard() {
+            const token = localStorage.getItem('token');
+
+            // If no token is found, kick the user back to login
+            if (!token) {
+                alert("Please login first!");
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                // This is the frontend version of your Postman request
+                const response = await fetch('http://localhost:5000/api/dashboard', {
+                    method: 'GET',
+                    headers: { 
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json' 
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Update the UI with data from your server.js response
+                    document.getElementById('userName').textContent = result.user.fullname || result.user.name || "Student";
+                    document.getElementById('userRole').textContent = result.user.role;
+                    document.getElementById('apiMessage').textContent = result.message;
+                } else {
+                    alert("Session expired. Please login again.");
+                    logout();
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('apiMessage').textContent = "Error connecting to server.";
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('role');
+            window.location.href = 'login.html';
+        }
+
+        // Run this function as soon as the page loads
+        window.onload = loadDashboard;
+    </script>
+</body>
+</html>

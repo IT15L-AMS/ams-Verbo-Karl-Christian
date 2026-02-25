@@ -15,7 +15,9 @@
 
             <div class="input-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Email@gmail.com" required>
+                <input type="email" id="email" placeholder="karlverbo@gmail.com" 
+                pattern=".+@gmail\.com$" 
+                title="Please use a valid @gmail.com address" required>
             </div>
 
             <div class="input-group">
@@ -28,10 +30,10 @@
                 <a href="#">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="submit-btn">Login to Dashboard</button>
+            <button type="submit" id="submitBtn" class="submit-btn">Login to Dashboard</button>
 
             <div class="back-home">
-                <a href="signup.html">Sign up</a>
+                <a href="signup.html">Don't have an account? Sign up</a>
             </div>
             
             <div class="back-home">
@@ -41,11 +43,50 @@
     </div>
 
     <script>
+        // Check if already logged in
+        const token = localStorage.getItem('token');
+        const role = localStorage.getItem('role');
+        
+        if (token && role) {
+            redirectByRole(role);
+        }
+
+        function redirectByRole(role) {
+            switch(role.toLowerCase()) {
+                case 'admin':
+                    window.location.href = 'admin/admin.html';
+                    break;
+                case 'instructor':
+                    window.location.href = 'instructor/instructor.html';
+                    break;
+                case 'registrar':
+                    window.location.href = 'registrar/Registrar.html';
+                    break;
+                case 'student':
+                    window.location.href = 'student/student.html';
+                    break;
+                default:
+                    // Fallback to the general dashboard we just created
+                    window.location.href = 'dashboard.html';
+            }
+        }
+
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-
-            const email = document.getElementById('email').value;
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const email = document.getElementById('email').value.toLowerCase();
             const password = document.getElementById('password').value;
+
+            // 1. Extra Gmail Validation
+            if (!email.endsWith('@gmail.com')) {
+                alert("Only @gmail.com accounts are permitted.");
+                return;
+            }
+
+            // Disable button during request
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Verifying...";
 
             try {
                 const response = await fetch('http://localhost:5000/auth/login', {
@@ -57,38 +98,22 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // 1. Store the Token and User info for session persistence
+                    // 2. Store Token and Info
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('role', data.role);
                     localStorage.setItem('userName', data.name);
 
-                    alert(`Welcome, ${data.name}! Redirecting to your dashboard...`);
-
-                    // 2. Redirect based on the role assigned in the database
-                    // These paths match your project folder structure
-                    switch(data.role) {
-                        case 'admin':
-                            window.location.href = 'admin/admin.html';
-                            break;
-                        case 'instructor':
-                            window.location.href = 'instructor/instructor.html';
-                            break;
-                        case 'registrar':
-                            window.location.href = 'registrar/Registrar.html';
-                            break;
-                        case 'student':
-                            window.location.href = 'student/student.html';
-                            break;
-                        default:
-                            alert("Role not recognized. Please contact admin.");
-                    }
+                    alert(`Welcome, ${data.name}!`);
+                    redirectByRole(data.role);
                 } else {
-                    // Shows "User not found" or "Invalid password" from your server
-                    alert("Login Error: " + data.message);
+                    alert("Login Failed: " + data.message);
                 }
             } catch (error) {
                 console.error("Connection Error:", error);
-                alert("Could not connect to the backend. Make sure your Node.js server is running!");
+                alert("Server is offline. Please check your backend terminal.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Login to Dashboard";
             }
         });
     </script>
