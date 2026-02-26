@@ -23,18 +23,17 @@ const db = mysql.createPool({
 
 db.getConnection()
     .then(connection => {
-        console.log("✅ Database Connected Successfully!");
+        console.log(" Database Connected Successfully!");
         connection.release();
     })
-    .catch(err => console.error("Database Connection Failed:", err.noDB));
+    .catch(err => console.error("Database Connection Failed:", err.message));
 
 // --- 2. AUTHENTICATION MIDDLEWARE ---
-// Use this for any route that needs a valid login token
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
-    if (!token) return res.status(401).json({ message: "Access Denied: No Token Provided" });
+    if (!token) return res.status(401).json({ message: "Access Denied: Invalid credential" });
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return res.status(403).json({ message: "Invalid or Expired Token" });
@@ -66,22 +65,36 @@ app.post('/auth/register', async (req, res) => {
     }
 });
 
-// LOGIN
+// --- UPDATED LOGIN TO MATCH YOUR POSTMAN REQUIREMENTS ---
 app.post('/auth/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        // Destructure using Capitalized keys from Postman request
+        const { Email, Password } = req.body; 
+
         const [rows] = await db.query(
             `SELECT u.*, r.role_name FROM users u 
              JOIN roles r ON u.role_id = r.id 
-             WHERE u.email = ?`, [email]
+             WHERE u.email = ?`, [Email]
         );
 
-        if (rows.length === 0) return res.status(401).json({ message: "User not found" });
+        // Error Response (401) if user not found
+        if (rows.length === 0) {
+            return res.status(401).json({ 
+                "Success": false, 
+                "Message": "Invalid credentials" 
+            });
+        }
 
         const user = rows[0];
-        const validPassword = await bcrypt.compare(password, user.password);
+        const validPassword = await bcrypt.compare(Password, user.password);
         
-        if (!validPassword) return res.status(401).json({ message: "Invalid password" });
+        // Error Response (401) if password is wrong
+        if (!validPassword) {
+            return res.status(401).json({ 
+                "Success": false, 
+                "Message": "Invalid credentials" 
+            });
+        }
 
         const token = jwt.sign(
             { id: user.id, role: user.role_name }, 
@@ -89,14 +102,18 @@ app.post('/auth/login', async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        res.json({ token, role: user.role_name, name: user.fullname });
+        // Success Response (200) matching your documentation
+        res.json({ 
+            "Success": true, 
+            "Token": token 
+        });
+
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ "Success": false, "Message": err.message });
     }
 });
 
 // --- 4. PROTECTED ROUTES ---
-// This is what Postman was looking for!
 app.get('/api/dashboard', authenticateToken, (req, res) => {
     res.json({ 
         message: "Welcome to the protected dashboard!", 
